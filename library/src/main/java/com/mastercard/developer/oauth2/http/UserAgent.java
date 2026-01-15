@@ -12,22 +12,28 @@ public final class UserAgent {
     private static final String PRODUCT = "Mastercard-OAuth2-Client";
     private static final String UNKNOWN_VERSION = "0.0.0-unknown";
     private static final String VERSION = readVersionFile();
+    // Cache the user-agent string to avoid rebuilding it on every call
+    private static final String CACHED_USER_AGENT = buildUserAgent();
 
     private UserAgent() {}
 
     /**
-     * Builds a stable user-agent string:
+     * Returns a stable, pre-built user-agent string:
      *   Product/Version (Runtime; OS [OS Version])
      * Example:
      *   Mastercard-OAuth2-Client/1.0.0 (Java/17.0.2; Linux 5.15)
      */
     public static String get() {
+        return CACHED_USER_AGENT;
+    }
+
+    private static String buildUserAgent() {
         String javaVer = System.getProperty("java.version", "unknown");
         String osName = System.getProperty("os.name", "unknown");
         String osVer = System.getProperty("os.version", "").trim();
-        var runtime = "Java/" + javaVer;
+        String runtime = "Java/" + javaVer;
         String osPart = osName + (osVer.isEmpty() ? "" : " " + osVer);
-        return String.format("%s/%s (%s; %s)", PRODUCT, VERSION, runtime, osPart);
+        return PRODUCT + "/" + VERSION + " (" + runtime + "; " + osPart + ")";
     }
 
     private static String readVersionFile() {

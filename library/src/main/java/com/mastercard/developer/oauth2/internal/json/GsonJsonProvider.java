@@ -1,6 +1,7 @@
 package com.mastercard.developer.oauth2.internal.json;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mastercard.developer.oauth2.internal.json.exception.OAuth2ClientJsonException;
 import java.lang.reflect.Type;
@@ -9,13 +10,18 @@ import java.util.Optional;
 
 public class GsonJsonProvider implements JsonProvider {
 
-    private static final Gson gson = new Gson();
+    // Use a configured Gson instance and cache the Map type to avoid allocating a new TypeToken on each parse.
+    private static final Gson gson = new GsonBuilder()
+        .disableHtmlEscaping()
+        .serializeNulls()
+        .create();
+
+    private static final Type MAP_TYPE = new TypeToken<Map<String, Object>>() {}.getType();
 
     @Override
     public Map<String, Object> parse(String json) throws OAuth2ClientJsonException {
         try {
-            Type type = new TypeToken<Map<String, Object>>() {}.getType();
-            return gson.fromJson(json, type);
+            return gson.fromJson(json, MAP_TYPE);
         } catch (Exception e) {
             throw new OAuth2ClientJsonException("Failed to read JSON", e);
         }
