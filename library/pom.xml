@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.mastercard.developer</groupId>
+        <artifactId>oauth2-client-java-root</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>oauth2-client-java</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <!-- Latest versions supported (as of January 2026) -->
+        <okhttp.version>5.3.2</okhttp.version>
+        <httpclient.version>5.6</httpclient.version>
+        <feign.version>13.6</feign.version>
+        <spring-web.version>7.0.2</spring-web.version>
+        <spring-webflux.version>7.0.2</spring-webflux.version>
+    </properties>
+
+    <dependencies>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- Provided dependencies only! -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <!-- OkHttp -->
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- OkHttp HttpLoggingInterceptor -->
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>${okhttp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- Apache HttpClient -->
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${httpclient.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- OpenFeign -->
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-core</artifactId>
+            <version>${feign.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- Spring RestClient -->
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring-web.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- Spring WebClient + Spring RestClient (pulls 'spring-web' as well) -->
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+            <version>${spring-webflux.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- JSON provider, option #1 -->
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.20.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- JSON provider, option #2 -->
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.13.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- JSON provider, option #3 -->
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20250517</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <!-- Logging -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.17</version>
+        </dependency>
+        <!-- ~~~~~~~~~~~~~~~~~ -->
+        <!-- Test dependencies -->
+        <!-- ~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <!-- OpenAPI Generator clients for tests -->
+            <groupId>${project.groupId}</groupId>
+            <artifactId>oauth2-client-java-test-clients</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- JWT validation for tests -->
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>10.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- Fake authorization and resource server -->
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>4.0.0-beta.17</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- .env file support for tests -->
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.2.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- Logger implementation for tests -->
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.24</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>6.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>6.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.20.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <version>1.5.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>1.83</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Ensure compilation targets Java 17 regardless of runner JDK -->
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+                <configuration>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Write a "VERSION" file into target/classes -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-version-file</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${project.build.outputDirectory}"/>
+                                <echo file="${project.build.outputDirectory}/VERSION" encoding="UTF-8">
+                                    ${project.version}
+                                </echo>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- Code style -->
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <formats>
+                        <format>
+                            <includes>
+                                <include>src/*/java/**/*.java</include>
+                            </includes>
+                            <prettier>
+                                <devDependencies>
+                                    <prettier>3.8.0</prettier>
+                                    <prettier-plugin-java>2.8.1</prettier-plugin-java>
+                                </devDependencies>
+                                <config>
+                                    <parser>java</parser>
+                                    <plugins>prettier-plugin-java</plugins>
+                                    <tabWidth>4</tabWidth>
+                                    <useTabs>false</useTabs>
+                                    <printWidth>180</printWidth>
+                                    <trailingComma>all</trailingComma>
+                                </config>
+                            </prettier>
+                        </format>
+                    </formats>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- JaCoCo code coverage -->
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.14</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- Javadoc JAR for https://www.javadoc.io/ -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.12.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-javadoc</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <nodeprecated>true</nodeprecated>
+                            <additionalOptions>-Xdoclint:none</additionalOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.mastercard.developer</groupId>
+        <artifactId>oauth2-client-java-root</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>oauth2-client-java-test-clients</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <openapi.generator.version>7.18.0</openapi.generator.version>
+        <use-jakarta-ee>true</use-jakarta-ee>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "okhttp-gson" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <gson-fire-version>1.9.0</gson-fire-version>
+        <okhttp-version>4.12.0</okhttp-version>
+        <gson-version>2.10.1</gson-version>
+        <commons-lang3-version>3.18.0</commons-lang3-version>
+        <jackson-databind-nullable-version>0.2.8</jackson-databind-nullable-version>
+        <jakarta.ws.rs-api-version>2.1.6</jakarta.ws.rs-api-version>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "native" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "feign" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <feign-version>13.2.1</feign-version>
+        <feign-form-version>3.8.0</feign-form-version>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "restclient" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <spring-web-version>6.2.13</spring-web-version>
+        <jackson-version>2.19.2</jackson-version>
+        <jackson-databind-version>2.19.2</jackson-databind-version>
+        <jakarta-annotation-version>2.1.1</jakarta-annotation-version>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "webclient" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <spring-boot-version>3.5.7</spring-boot-version>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "apache-httpclient" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <httpclient-version>5.5.2</httpclient-version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "okhttp-gson" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>${okhttp-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.gsonfire</groupId>
+            <artifactId>gson-fire</artifactId>
+            <version>${gson-fire-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>${jackson-databind-nullable-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>${jakarta.ws.rs-api-version}</version>
+        </dependency>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "native" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "feign" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-core</artifactId>
+            <version>${feign-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-jackson</artifactId>
+            <version>${feign-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-slf4j</artifactId>
+            <version>${feign-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form</artifactId>
+            <version>${feign-form-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+            <version>${feign-version}</version>
+        </dependency>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "restclient" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring-web-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
+            <artifactId>jackson-jakarta-rs-json-provider</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta-annotation-version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "webclient" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>${spring-boot-version}</version>
+        </dependency>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- OpenAPI Generator with "apache-httpclient" -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${httpclient-version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Ensure compilation targets Java 17 regardless of runner JDK -->
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+                <configuration>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi.generator.version}</version>
+                <configuration>
+                    <generatorName>java</generatorName>
+                    <generateApiTests>false</generateApiTests>
+                    <generateModelTests>false</generateModelTests>
+                    <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
+                </configuration>
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <!-- OpenAPI Generator with "okhttp-gson" -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <executions>
+                    <execution>
+                        <id>openapi-generator.petstore.okhttp</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>petstore-okhttp-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.petstore.okhttp</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/petstore-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/petstore-okhttp-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>okhttp-gson</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.petstore.okhttp.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.petstore.okhttp.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>openapi-generator.fake.okhttp</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>fake-okhttp-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.fake.okhttp</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/fake-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/fake-okhttp-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>okhttp-gson</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.fake.okhttp.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.fake.okhttp.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <!-- OpenAPI Generator with "native" -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <execution>
+                        <id>openapi-generator.petstore.java</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>petstore-java-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.petstore.java</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/petstore-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/petstore-java-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>native</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.petstore.java.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.petstore.java.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>openapi-generator.fake.java</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>fake-java-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.fake.java</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/fake-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/fake-java-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>native</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.fake.java.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.fake.java.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <!-- OpenAPI Generator with "feign" -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <execution>
+                        <id>openapi-generator.petstore.feign</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>petstore-feign-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.petstore.feign</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/petstore-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/petstore-feign-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>feign</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.petstore.feign.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.petstore.feign.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>openapi-generator.fake.feign</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>fake-feign-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.fake.feign</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/fake-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/fake-feign-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>feign</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.fake.feign.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.fake.feign.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <!-- OpenAPI Generator with "restclient" -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <execution>
+                        <id>openapi-generator.petstore.restclient</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>petstore-restclient-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.petstore.restclient</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/petstore-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/petstore-restclient-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>restclient</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.petstore.restclient.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.petstore.restclient.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>openapi-generator.fake.restclient</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>fake-restclient-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.fake.restclient</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/fake-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/fake-restclient-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>restclient</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.fake.restclient.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.fake.restclient.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <!-- OpenAPI Generator with "webclient" -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <execution>
+                        <id>openapi-generator.petstore.webclient</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>petstore-webclient-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.petstore.webclient</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/petstore-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/petstore-webclient-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>webclient</library>
+                                <useJakartaEe>${use-jakarta-ee}</useJakartaEe>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.petstore.webclient.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.petstore.webclient.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>openapi-generator.fake.webclient</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>fake-webclient-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.fake.webclient</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/fake-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/fake-webclient-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>webclient</library>
+                                <useJakartaEe>${use-jakarta-ee}</useJakartaEe>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.fake.webclient.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.fake.webclient.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <!-- OpenAPI Generator with "apache-httpclient" -->
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <execution>
+                        <id>openapi-generator.petstore.apache</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>petstore-apache-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.petstore.apache</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/petstore-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/petstore-apache-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>apache-httpclient</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.petstore.apache.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.petstore.apache.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>openapi-generator.fake.apache</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <artifactId>fake-apache-openapi-generator-client</artifactId>
+                            <groupId>com.mastercard.developer.test.openapi-generator.fake.apache</groupId>
+                            <artifactVersion>${project.version}</artifactVersion>
+                            <inputSpec>${project.basedir}/src/test/resources/openapi/fake-api.yaml</inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/fake-apache-openapi-generator-client
+                            </output>
+                            <configOptions>
+                                <library>apache-httpclient</library>
+                                <apiPackage>com.mastercard.developer.test.openapi-generator.fake.apache.api
+                                </apiPackage>
+                                <modelPackage>com.mastercard.developer.test.openapi-generator.fake.apache.model
+                                </modelPackage>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>3.1.4</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.1.4</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

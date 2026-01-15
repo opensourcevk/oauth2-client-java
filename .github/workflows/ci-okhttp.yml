@@ -1,0 +1,53 @@
+name: OkHttp
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: [ '17' ]
+        okhttp-version: [ '4.0.0', '4.12.0', '5.1.0', '5.2.3', '5.3.2' ]
+    name: v${{ matrix.okhttp-version }}
+    env:
+      OKHTTP: 'com.squareup.okhttp3:okhttp,com.squareup.okhttp3:logging-interceptor'
+      APACHE_CLIENT: 'org.apache.httpcomponents.client5:httpclient5'
+      FEIGN: 'io.github.openfeign:feign-core'
+      SPRING_WEB: 'org.springframework:spring-web'
+      SPRING_WEBFLUX: 'org.springframework:spring-webflux'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.java-version }}
+
+      - name: Cache Maven local repository
+        uses: actions/cache@v5
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}-java-${{ matrix.java-version }}-okhttp-${{ matrix.okhttp-version }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Build and run tests with OkHttp ${{ matrix.okhttp-version }}
+        run: mvn -B test "-Dtest=com.mastercard.developer.oauth2.http.okhttp3.OAuth2InterceptorTest" "-Dsurefire.failIfNoSpecifiedTests=false" "-Dokhttp.version=${{ matrix.okhttp-version }}" "-Dmaven.test.dependency.excludes=${{ env.FEIGN }},${{ env.SPRING_WEB }},${{ env.SPRING_WEBFLUX }}"
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          KID: ${{ secrets.KID }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          TOKEN_ENDPOINT: ${{ secrets.TOKEN_ENDPOINT }}
+          ISSUER: ${{ secrets.ISSUER }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          READ_SCOPES: ${{ secrets.READ_SCOPES }}
+          WRITE_SCOPES: ${{ secrets.WRITE_SCOPES }}

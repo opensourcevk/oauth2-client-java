@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  version: ""
+  title: Pet Store API
+servers:
+  - url: https://api.mastercard.com/oauth-petstore/petstore
+  - url: https://sandbox.api.mastercard.com/oauth-petstore/petstore
+tags:
+  - name: Pets
+paths:
+  /dogs:
+    post:
+      tags: [ Pets ]
+      operationId: addDog
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewDog'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dog'
+  /dogs/{pet_id}:
+    get:
+      tags: [ Pets ]
+      operationId: getDog
+      parameters:
+        - name: pet_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dog'
+  /pets/{pet_id}:
+    delete:
+      tags: [ Pets ]
+      operationId: deleteDog
+      parameters:
+        - name: pet_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: ''
+components:
+  schemas:
+    PetStatus:
+      type: object
+      required: [ value ]
+      properties:
+        value:
+          $ref: '#/components/schemas/PetStatusValue'
+    PetStatusValue:
+      type: string
+    NewDog:
+      type: object
+      required: [ status, gender, breed, color ]
+      properties:
+        status:
+          $ref: '#/components/schemas/PetStatus'
+        name:
+          type: string
+        breed:
+          type: string
+        color:
+          type: string
+        gender:
+          type: string
+        birthdate:
+          type: object
+          properties:
+            year:
+              type: integer
+            month:
+              type: integer
+            day:
+              type: integer
+        dogProperty1:
+          type: object
+          additionalProperties: true
+        dogProperty2:
+          type: object
+          additionalProperties: true
+    Dog:
+      allOf:
+        - $ref: '#/components/schemas/NewDog'
+        - type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+            dogProperty3:
+              type: object
+              additionalProperties: true

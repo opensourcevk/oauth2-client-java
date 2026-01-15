@@ -1,0 +1,64 @@
+openapi: "3.0.3"
+info:
+  title: Fake Resource Server API
+  version: ""
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: Resources
+paths:
+  /api/resources:
+    post:
+      tags: [ Resources ]
+      operationId: createResource
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/resources/{id}:
+    get:
+      tags: [ Resources ]
+      operationId: getResourceById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+    delete:
+      tags: [ Resources ]
+      operationId: deleteResourceById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+components:
+  schemas:
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
