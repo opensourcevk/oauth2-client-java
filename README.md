@@ -67,6 +67,7 @@ dependencies {
 
 ### Documentation
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Mastercard/oauth2-client-java)
 [![Javadoc](https://javadoc.io/badge2/com.mastercard.developer/oauth2-client-java/javadoc.svg)](https://javadoc.io/doc/com.mastercard.developer/oauth2-client-java)
 
 A Javadoc site is available at [javadoc.io](https://javadoc.io/doc/com.mastercard.developer/oauth2-client-java).
@@ -353,4 +354,5 @@ cd library && mvn spotless:apply
 ### IDE Integration
 
 - The File Watchers plugin can format `.java` files on save
+
 - See watcher configuration in [`watcherTasks.xml`](./.idea/watcherTasks.xml)
