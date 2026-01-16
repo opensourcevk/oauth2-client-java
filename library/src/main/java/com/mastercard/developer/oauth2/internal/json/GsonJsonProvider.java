@@ -1,7 +1,6 @@
 package com.mastercard.developer.oauth2.internal.json;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mastercard.developer.oauth2.internal.json.exception.OAuth2ClientJsonException;
 import java.lang.reflect.Type;
@@ -10,12 +9,7 @@ import java.util.Optional;
 
 public class GsonJsonProvider implements JsonProvider {
 
-    // Use a configured Gson instance and cache the Map type to avoid allocating a new TypeToken on each parse.
-    private static final Gson gson = new GsonBuilder()
-        .disableHtmlEscaping()
-        .serializeNulls()
-        .create();
-
+    private static final Gson gson = new Gson();
     private static final Type MAP_TYPE = new TypeToken<Map<String, Object>>() {}.getType();
 
     @Override

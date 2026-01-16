@@ -9,9 +9,7 @@ import java.util.Optional;
 public class JacksonJsonProvider implements JsonProvider {
 
     private static final ObjectMapper mapper = new ObjectMapper();
-
-    // Cache the TypeReference to avoid creating a new anonymous subclass on each parse call.
-    private static final TypeReference<Map<String, Object>> MAP_TYPE_REFERENCE = new TypeReference<Map<String, Object>>() {};
+    private static final TypeReference<Map<String, Object>> MAP_TYPE_REFERENCE = new TypeReference<>() {};
 
     @Override
     public Map<String, Object> parse(String json) throws OAuth2ClientJsonException {
