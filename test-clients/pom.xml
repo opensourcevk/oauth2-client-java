@@ -12,7 +12,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <openapi-generator.version>7.19.0</openapi-generator.version>
+        <openapi-generator.version>7.20.0</openapi-generator.version>
         <use-jakarta-ee>true</use-jakarta-ee>
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- OpenAPI Generator with "okhttp-gson" -->
@@ -21,7 +21,7 @@
         <okhttp-version>4.12.0</okhttp-version>
         <gson-version>2.10.1</gson-version>
         <commons-lang3-version>3.18.0</commons-lang3-version>
-        <jackson-databind-nullable-version>0.2.8</jackson-databind-nullable-version>
+        <jackson-databind-nullable-version>0.2.9</jackson-databind-nullable-version>
         <jakarta.ws.rs-api-version>2.1.6</jakarta.ws.rs-api-version>
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -38,8 +38,9 @@
         <!-- OpenAPI Generator with "restclient" -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <spring-web-version>6.2.13</spring-web-version>
-        <jackson-version>2.19.2</jackson-version>
-        <jackson-databind-version>2.19.2</jackson-databind-version>
+        <jackson-version>2.21.1</jackson-version>
+        <jackson-annotations-version>2.21</jackson-annotations-version>
+        <jackson-databind-version>2.21.1</jackson-databind-version>
         <jakarta-annotation-version>2.1.1</jakarta-annotation-version>
 
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -152,7 +153,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>${jackson-version}</version>
+            <version>${jackson-annotations-version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
