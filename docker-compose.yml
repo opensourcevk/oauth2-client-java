@@ -1,0 +1,16 @@
+
+services:
+  # Use Case: To provide a reproducible, isolated environment for developers to
+  # compile the library and run the test suite without needing to install Java 17
+  # and Maven locally on their host machines.
+  maven-build:
+    image: maven:3.9-eclipse-temurin-17
+    container_name: oauth2-client-java-build
+    volumes:
+      - .:/usr/src/app
+      - maven-repo:/root/.m2
+    working_dir: /usr/src/app
+    command: mvn clean test
+
+volumes:
+  maven-repo:
